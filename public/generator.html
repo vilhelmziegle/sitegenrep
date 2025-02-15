@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/" class="logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <path d="M22 6l-10 7L2 6"/>
+            </svg>
+            ReceiptGen
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about.html">About Us</a>
+            <a href="/contact.html">Contact Us</a>
+            <a href="/faq.html">FAQ</a>
+        </div>
+        <a href="/generator.html" class="access-btn">Access</a>
+    </nav>
+
+    <div class="page-content">
+        <h1>Generate Your Receipt</h1>
+        <p>Select a brand below to generate your receipt. All templates are regularly updated to match the latest formats.</p>
+        
+        <div class="brands-grid">
+            <div class="brand-card" onclick="openModal('apple', 'Apple', 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple" class="brand-logo">
+                <p class="brand-name">Apple</p>
+            </div>
+            <div class="brand-card" onclick="openModal('nike', 'Nike', 'https://upload.wikimedia.org/wikipedia/commons/a/a6/Nike_Logo.svg')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Nike_Logo.svg" alt="Nike" class="brand-logo">
+                <p class="brand-name">Nike</p>
+            </div>
+            <div class="brand-card" onclick="openModal('adidas', 'Adidas', 'https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" alt="Adidas" class="brand-logo">
+                <p class="brand-name">Adidas</p>
+            </div>
+            <div class="brand-card" onclick="openModal('samsung', 'Samsung', 'https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung" class="brand-logo">
+                <p class="brand-name">Samsung</p>
+            </div>
+            <div class="brand-card" onclick="openModal('zara', 'Zara', 'https://upload.wikimedia.org/wikipedia/commons/f/fd/Zara_Logo.svg')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Zara_Logo.svg" alt="Zara" class="brand-logo">
+                <p class="brand-name">Zara</p>
+            </div>
+            <div class="brand-card" onclick="openModal('hm', 'H&M', 'https://upload.wikimedia.org/wikipedia/commons/5/53/H%26M-Logo.svg')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/H%26M-Logo.svg" alt="H&M" class="brand-logo">
+                <p class="brand-name">H&M</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="receiptModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">×</button>
+            <div class="selected-brand">
+                <img id="modalBrandLogo" src="" alt="">
+                <h2 id="modalBrandName"></h2>
+            </div>
+            <form id="receipt-form">
+                <input type="hidden" id="brand">
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="date">Purchase Date:</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="total">Total Amount ($):</label>
+                    <input type="number" id="total" step="0.01" min="0" required>
+                </div>
+                <button type="button" class="generate-btn" onclick="generateReceipt()">Generate Receipt</button>
+            </form>
+            <div id="loading" class="loading">Generating receipt...</div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="/about.html">About Us</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                    <li><a href="/terms.html">Terms of Service</a></li>
+                    <li><a href="/privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">API Documentation</a></li>
+                    <li><a href="#">Partnerships</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <ul>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Discord</a></li>
+                    <li><a href="#">Telegram</a></li>
+                    <li><a href="#">GitHub</a></li>
+                </ul>
+            </div>
+            <div class="footer-section newsletter">
+                <h3>Newsletter</h3>
+                <p>Stay updated with our latest features and releases.</p>
+                <input type="email" placeholder="Enter your email">
+                <button>Subscribe</button>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2024 Receipt Generator. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
